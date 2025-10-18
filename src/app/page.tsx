@@ -12,11 +12,8 @@ export default function Home() {
       
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
-        {/* Logo */}
+        {/* Title */}
         <div className="mb-8">
-          <div className="w-20 h-20 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl mx-auto mb-4">
-            <span className="text-white font-bold text-2xl">WW</span>
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
             Wyatt Works Connect
           </h1>
