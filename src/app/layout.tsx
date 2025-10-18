@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Wyatt Works Connect - Coming Soon",
   description: "The Wyatt Works Connect community forum is coming soon. Join entrepreneurs transforming ideas into powerful impact.",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
