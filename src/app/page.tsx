@@ -32,7 +32,7 @@ export default function Home() {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            We're building something amazing. A community forum where entrepreneurs connect, 
+            We&apos;re building something amazing. A community forum where entrepreneurs connect, 
             collaborate, and transform ideas into powerful impact.
           </p>
         </div>
