@@ -275,7 +275,7 @@ export function IPLeaderboard({
               </div>
               <div className="flex items-center space-x-2">
                 <div className="flex space-x-1">
-                  {leader.badges.slice(0, 2).map((badge: string, i: number) => (
+                  {leader.badges?.slice(0, 2).map((badge: string, i: number) => (
                     <Badge key={i} variant="secondary" className="text-xs">
                       {badge}
                     </Badge>
