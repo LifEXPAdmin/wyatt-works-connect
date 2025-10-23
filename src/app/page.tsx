@@ -77,7 +77,7 @@ export default function Home() {
                 </div>
                 <CardTitle>1. Create Your Profile</CardTitle>
                 <CardDescription>
-                  Share your skills, intent, and location. Tell us what you're building or what you want to join.
+                  Share your skills, intent, and location. Tell us what you&apos;re building or what you want to join.
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -233,7 +233,7 @@ export default function Home() {
       <section className="py-20 px-4 bg-muted/30">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What's Happening Now</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">What&apos;s Happening Now</h2>
             <p className="text-lg text-muted-foreground">
               See the latest projects and people joining the community
             </p>
