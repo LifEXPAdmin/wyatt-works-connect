@@ -208,7 +208,7 @@ export function FirstTimePosterPrompt({ onUseTemplate, onSkip }: BuildLogTemplat
         Daily posts attract cofounders and build momentum.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <Button onClick={onUseTemplate} variant="gradient">
+        <Button onClick={() => onUseTemplate?.(template)} variant="gradient">
           Use Build Log Template
         </Button>
         <Button onClick={onSkip} variant="outline">
