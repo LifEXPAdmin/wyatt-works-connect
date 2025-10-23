@@ -197,6 +197,16 @@ ${template.askForHelp}`
 }
 
 export function FirstTimePosterPrompt({ onUseTemplate, onSkip }: BuildLogTemplateProps) {
+  const defaultTemplate = {
+    title: 'Daily Build Log',
+    yesterday: '',
+    today: '',
+    blockers: '',
+    askForHelp: '',
+    tags: ['build-log'],
+    location: ''
+  }
+
   return (
     <div className="text-center py-8 px-4">
       <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -208,7 +218,7 @@ export function FirstTimePosterPrompt({ onUseTemplate, onSkip }: BuildLogTemplat
         Daily posts attract cofounders and build momentum.
       </p>
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <Button onClick={() => onUseTemplate?.(template)} variant="gradient">
+        <Button onClick={() => onUseTemplate?.(defaultTemplate)} variant="gradient">
           Use Build Log Template
         </Button>
         <Button onClick={onSkip} variant="outline">
