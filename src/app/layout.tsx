@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs'
+import { NotificationProvider } from '@/components/notifications'
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wyatt Works Connect - Coming Soon",
-  description: "The Wyatt Works Connect community forum is coming soon. Join entrepreneurs transforming ideas into powerful impact.",
+  title: "Wyatt Works - Find Your Cofounder. Build Something Real.",
+  description: "Connect founders, cofounders, and collaborators. Get the blueprint to launch with local meetups, mentorship, and structured progress.",
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -28,12 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <NotificationProvider>
+            {children}
+          </NotificationProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
