@@ -64,10 +64,10 @@ export default function NewForumPostPage() {
 
   const handleUseTemplate = (template: Record<string, unknown>) => {
     setFormData({
-      title: template.title,
-      content: template.content,
-      tags: template.tags,
-      location: template.location,
+      title: template.title as string,
+      content: template.content as string,
+      tags: template.tags as string[],
+      location: template.location as string,
     })
     setSelectedCategory('build-logs')
     setSelectedPostType('showcase')
