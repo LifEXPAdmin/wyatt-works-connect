@@ -238,16 +238,16 @@ export function IPLeaderboard({
   type?: 'global' | 'local'
   limit?: number 
 }) {
-  const [leaders, setLeaders] = useState<Array<{id: string, name: string, points: number, avatar?: string}>>([])
+  const [leaders, setLeaders] = useState<Array<{id: string, name: string, points: number, avatar?: string, ip?: number, badges?: string[], city?: string}>>([])
 
   useEffect(() => {
     // TODO: Fetch from database
     setLeaders([
-      { id: '1', name: 'Sarah Miller', ip: 278, badges: ['First Ship', 'Cofounder Match'], city: 'Austin, TX' },
-      { id: '2', name: 'Mike Johnson', ip: 256, badges: ['First Ship', '100 Helpfuls'], city: 'Seattle, WA' },
-      { id: '3', name: 'Alex Lee', ip: 234, badges: ['City Founder', 'Lighthouse'], city: 'San Francisco, CA' },
-      { id: '4', name: 'Rachel Davis', ip: 198, badges: ['First Ship'], city: 'Chicago, IL' },
-      { id: '5', name: 'Tom Wilson', ip: 187, badges: ['Cofounder Match'], city: 'Denver, CO' },
+      { id: '1', name: 'Sarah Miller', points: 278, badges: ['First Ship', 'Cofounder Match'], city: 'Austin, TX' },
+      { id: '2', name: 'Mike Johnson', points: 256, badges: ['First Ship', '100 Helpfuls'], city: 'Seattle, WA' },
+      { id: '3', name: 'Alex Lee', points: 234, badges: ['City Founder', 'Lighthouse'], city: 'San Francisco, CA' },
+      { id: '4', name: 'Rachel Davis', points: 198, badges: ['First Ship'], city: 'Chicago, IL' },
+      { id: '5', name: 'Tom Wilson', points: 187, badges: ['Cofounder Match'], city: 'Denver, CO' },
     ])
   }, [type, limit])
 
