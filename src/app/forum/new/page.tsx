@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Header } from '@/components/navigation'
 import { ProfileGate } from '@/components/profile-completeness'
-import { BuildLogTemplate } from '@/components/build-log-template'
+import { BuildLogTemplate, FirstTimePosterPrompt } from '@/components/build-log-template'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'

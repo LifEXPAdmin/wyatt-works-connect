@@ -4,7 +4,7 @@ import { useCallback } from 'react'
 
 interface AnalyticsEvent {
   event: string
-  properties?: Record<string, any>
+  properties?: Record<string, unknown>
   timestamp?: string
   userId?: string
 }
@@ -12,7 +12,7 @@ interface AnalyticsEvent {
 class Analytics {
   private events: AnalyticsEvent[] = []
 
-  track(event: string, properties?: Record<string, any>) {
+  track(event: string, properties?: Record<string, unknown>) {
     const analyticsEvent: AnalyticsEvent = {
       event,
       properties,
@@ -81,7 +81,7 @@ const analytics = new Analytics()
 
 // Hook for easy use in components
 export function useAnalytics() {
-  const track = useCallback((event: string, properties?: Record<string, any>) => {
+  const track = useCallback((event: string, properties?: Record<string, unknown>) => {
     analytics.track(event, properties)
   }, [])
 

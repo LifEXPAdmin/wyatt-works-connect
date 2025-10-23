@@ -158,7 +158,7 @@ export function RateLimitDisplay({
         <div>
           <h4 className="font-medium text-red-800">Rate Limit Reached</h4>
           <p className="text-sm text-red-700">
-            You've sent {rateLimit.limit} intros today. 
+            You&apos;ve sent {rateLimit.limit} intros today. 
             {timeUntilReset && ` Try again in ${timeUntilReset}.`}
           </p>
         </div>
@@ -185,7 +185,7 @@ export function RateLimitError({
           </div>
           <h2 className="text-xl font-bold mb-2">Rate Limit Reached</h2>
           <p className="text-muted-foreground mb-4">
-            You've sent {rateLimit.limit} introductions today. 
+            You&apos;ve sent {rateLimit.limit} introductions today. 
             This helps maintain quality conversations and prevents spam.
           </p>
           {timeUntilReset && (
