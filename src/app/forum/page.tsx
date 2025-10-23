@@ -198,9 +198,9 @@ export default function ForumPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
-                  I'm working on a personalized learning platform for homeschool families. 
+                  I&apos;m working on a personalized learning platform for homeschool families. 
                   Before I dive into development, what are the best ways to validate this idea? 
-                  I'm thinking surveys, interviews, and maybe a landing page...
+                  I&apos;m thinking surveys, interviews, and maybe a landing page...
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4 text-sm text-muted-foreground">

@@ -38,7 +38,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Whether you're starting from a spark or ready to scale, Wyatt Works connects founders, 
+              Whether you&apos;re starting from a spark or ready to scale, Wyatt Works connects founders, 
               cofounders, and collaborators—and gives you the blueprint to launch.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

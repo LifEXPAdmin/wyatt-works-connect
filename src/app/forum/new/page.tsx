@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Header } from '@/components/navigation'
 import { ProfileGate } from '@/components/profile-completeness'
-import { BuildLogTemplate, FirstTimePosterPrompt } from '@/components/build-log-template'
+import { BuildLogTemplate } from '@/components/build-log-template'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -62,7 +62,7 @@ export default function NewForumPostPage() {
     }))
   }
 
-  const handleUseTemplate = (template: any) => {
+  const handleUseTemplate = (template: Record<string, unknown>) => {
     setFormData({
       title: template.title,
       content: template.content,

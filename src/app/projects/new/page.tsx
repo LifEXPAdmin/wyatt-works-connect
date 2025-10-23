@@ -102,7 +102,7 @@ export default function NewProjectPage() {
     setRoles([...roles, newRole])
   }
 
-  const updateRole = (id: string, field: keyof Role, value: any) => {
+  const updateRole = (id: string, field: keyof Role, value: string | number | boolean) => {
     setRoles(roles.map(role => 
       role.id === id ? { ...role, [field]: value } : role
     ))

@@ -17,7 +17,7 @@ import {
 } from 'lucide-react'
 
 interface BuildLogTemplateProps {
-  onUseTemplate?: (template: any) => void
+  onUseTemplate?: (template: Record<string, unknown>) => void
   onSkip?: () => void
 }
 
@@ -223,8 +223,8 @@ export function BuildLogComposer({
   initialData,
   onSubmit 
 }: { 
-  initialData?: any
-  onSubmit?: (data: any) => void 
+  initialData?: Record<string, unknown>
+  onSubmit?: (data: Record<string, unknown>) => void 
 }) {
   const [showTemplate, setShowTemplate] = useState(!initialData)
 

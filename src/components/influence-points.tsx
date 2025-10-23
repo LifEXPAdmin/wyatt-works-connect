@@ -238,7 +238,7 @@ export function IPLeaderboard({
   type?: 'global' | 'local'
   limit?: number 
 }) {
-  const [leaders, setLeaders] = useState<any[]>([])
+  const [leaders, setLeaders] = useState<Array<{id: string, name: string, points: number, avatar?: string}>>([])
 
   useEffect(() => {
     // TODO: Fetch from database

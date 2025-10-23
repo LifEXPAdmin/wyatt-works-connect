@@ -274,7 +274,7 @@ export function BoostEmailTemplate({
 
 // Hook to check for projects that need boost emails
 export function useBoostEmailChecker() {
-  const [projectsNeedingBoost, setProjectsNeedingBoost] = useState<any[]>([])
+  const [projectsNeedingBoost, setProjectsNeedingBoost] = useState<Array<{id: string, title: string, createdAt: string}>>([])
 
   useEffect(() => {
     // TODO: Check database for projects that need boost emails

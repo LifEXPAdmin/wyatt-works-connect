@@ -295,7 +295,7 @@ export default function InboxPage() {
                     ].map((tab) => (
                       <button
                         key={tab.id}
-                        onClick={() => setActiveTab(tab.id as any)}
+                        onClick={() => setActiveTab(tab.id as 'all' | 'unread' | 'sent' | 'archived')}
                         className={`flex-1 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
                           activeTab === tab.id
                             ? 'border-primary text-primary'

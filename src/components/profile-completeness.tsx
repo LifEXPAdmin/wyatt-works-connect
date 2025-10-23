@@ -18,7 +18,7 @@ import {
 import Link from 'next/link'
 
 interface ProfileCompletenessProps {
-  profile?: any
+  profile?: Record<string, unknown>
   showDetails?: boolean
   onComplete?: () => void
 }
@@ -38,7 +38,7 @@ export function ProfileCompleteness({
     }
   }, [profile])
 
-  const calculateCompleteness = (profileData: any) => {
+  const calculateCompleteness = (profileData: Record<string, unknown>) => {
     const items = [
       { key: 'name', label: 'Name', weight: 10, check: () => profileData.name?.length > 0 },
       { key: 'headline', label: 'Professional Headline', weight: 15, check: () => profileData.headline?.length >= 10 },
@@ -48,7 +48,7 @@ export function ProfileCompleteness({
       { key: 'skills', label: 'Skills (3+)', weight: 15, check: () => profileData.skills?.length >= 3 },
       { key: 'industries', label: 'Industries', weight: 10, check: () => profileData.industries?.length > 0 },
       { key: 'bio', label: 'Bio', weight: 10, check: () => profileData.bio?.length > 0 },
-      { key: 'portfolio', label: 'Portfolio Links', weight: 10, check: () => profileData.portfolio && Object.values(profileData.portfolio).some((link: any) => link?.length > 0) },
+      { key: 'portfolio', label: 'Portfolio Links', weight: 10, check: () => profileData.portfolio && Object.values(profileData.portfolio).some((link: unknown) => (link as string)?.length > 0) },
     ]
 
     let totalWeight = 0
@@ -182,7 +182,7 @@ export function ProfileGate({
   fallbackMessage?: string
 }) {
   const { user } = useUser()
-  const [profile, setProfile] = useState<any>(null)
+  const [profile, setProfile] = useState<Record<string, unknown> | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

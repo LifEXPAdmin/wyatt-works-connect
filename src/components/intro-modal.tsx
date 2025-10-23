@@ -412,9 +412,9 @@ export function IntroButton({
   role, 
   founder 
 }: { 
-  project: any
-  role: any
-  founder: any 
+  project: Record<string, unknown>
+  role: Record<string, unknown>
+  founder: Record<string, unknown>
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
