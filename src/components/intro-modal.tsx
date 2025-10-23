@@ -46,8 +46,8 @@ interface IntroModalProps {
     id: string
     name: string
     headline: string
-    skills: string[]
-    location: string
+    skills?: string[]
+    location?: string
   }
 }
 
@@ -434,6 +434,8 @@ export function IntroButton({
     name: string
     headline: string
     avatarUrl?: string
+    skills?: string[]
+    location?: string
   }
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
