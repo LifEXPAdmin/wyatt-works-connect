@@ -133,7 +133,7 @@ export function IntroModal({ isOpen, onClose, project, role, founder }: IntroMod
       .replace(/{{founderName}}/g, founder.name)
       .replace(/{{role}}/g, role.title)
       .replace(/{{projectTitle}}/g, project.title)
-      .replace(/{{skills}}/g, founder.skills.slice(0, 3).join(', '))
+      .replace(/{{skills}}/g, founder.skills?.slice(0, 3).join(', ') || 'relevant skills')
       .replace(/{{senderName}}/g, 'Your Name') // TODO: Get from user profile
       .replace(/{{senderRole}}/g, 'Technical Cofounder') // TODO: Get from user profile
       .replace(/{{commitment}}/g, formData.commitment || 'Full-time')
