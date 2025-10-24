@@ -20,23 +20,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
-export function UserButton() {
-  // Check if Clerk is available
-  const clerkAvailable = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-  
-  if (!clerkAvailable) {
-    return (
-      <div className="flex items-center space-x-2">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/sign-in">Sign In</Link>
-        </Button>
-        <Button variant="gradient" size="sm" asChild>
-          <Link href="/sign-up">Start Your Profile</Link>
-        </Button>
-      </div>
-    )
-  }
-
+function ClerkUserButton() {
   const { user } = useUser()
   const { signOut } = useClerk()
 
@@ -116,15 +100,26 @@ export function UserButton() {
   )
 }
 
-export function AuthGuard({ children }: { children: React.ReactNode }) {
-  // Check if Clerk is available
+export function UserButton() {
   const clerkAvailable = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
   
   if (!clerkAvailable) {
-    // If Clerk isn't available, just render children (for development/demo)
-    return <>{children}</>
+    return (
+      <div className="flex items-center space-x-2">
+        <Button variant="ghost" size="sm" asChild>
+          <Link href="/sign-in">Sign In</Link>
+        </Button>
+        <Button variant="gradient" size="sm" asChild>
+          <Link href="/sign-up">Start Your Profile</Link>
+        </Button>
+      </div>
+    )
   }
 
+  return <ClerkUserButton />
+}
+
+function ClerkAuthGuard({ children }: { children: React.ReactNode }) {
   const { isLoaded, isSignedIn } = useUser()
 
   if (!isLoaded) {
@@ -157,4 +152,15 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
   }
 
   return <>{children}</>
+}
+
+export function AuthGuard({ children }: { children: React.ReactNode }) {
+  const clerkAvailable = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  if (!clerkAvailable) {
+    // If Clerk isn't available, just render children (for development/demo)
+    return <>{children}</>
+  }
+
+  return <ClerkAuthGuard>{children}</ClerkAuthGuard>
 }
