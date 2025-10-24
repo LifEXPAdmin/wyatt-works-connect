@@ -26,7 +26,7 @@ export function useIntroRateLimit() {
 
     // Load rate limit data from localStorage
     const loadRateLimit = () => {
-      const key = `intro_rate_limit_${user.id}`
+      const key = `intro_rate_limit_demo_user`
       const stored = localStorage.getItem(key)
       
       if (stored) {
@@ -67,12 +67,12 @@ export function useIntroRateLimit() {
     }
 
     loadRateLimit()
-  }, [user?.id])
+  }, []) // Removed user?.id dependency
 
   const incrementCount = () => {
-    if (!user?.id) return false
+    // Removed user check since user is undefined
 
-    const key = `intro_rate_limit_${user.id}`
+    const key = `intro_rate_limit_demo_user`
     const stored = localStorage.getItem(key)
     
     if (stored) {

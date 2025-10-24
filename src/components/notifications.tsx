@@ -44,19 +44,19 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     // if (!user?.id) return
 
     // Load notifications from localStorage
-    const key = `notifications_${user.id}`
+    const key = `notifications_demo_user`
     const stored = localStorage.getItem(key)
     
     if (stored) {
       setNotifications(JSON.parse(stored))
     }
-  }, [user?.id])
+  }, []) // Removed user?.id dependency
 
   useEffect(() => {
     // if (!user?.id) return
 
     // Save notifications to localStorage
-    const key = `notifications_${user.id}`
+    const key = `notifications_demo_user`
     localStorage.setItem(key, JSON.stringify(notifications))
   }, [notifications, user?.id])
 
