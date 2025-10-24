@@ -22,7 +22,7 @@ export function useIntroRateLimit() {
   })
 
   useEffect(() => {
-    if (!user?.id) return
+    // if (!user?.id) return // Removed user check
 
     // Load rate limit data from localStorage
     const loadRateLimit = () => {
