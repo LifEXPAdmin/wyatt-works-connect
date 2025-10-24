@@ -1,4 +1,8 @@
-import { SignUp } from '@clerk/nextjs'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import Link from 'next/link'
 
 export default function SignUpPage() {
   return (
@@ -16,14 +20,39 @@ export default function SignUpPage() {
             Start your journey from spark to impact
           </p>
         </div>
-        <SignUp 
-          appearance={{
-            elements: {
-              formButtonPrimary: 'bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700',
-              card: 'shadow-lg',
-            }
-          }}
-        />
+        <Card>
+          <CardHeader>
+            <CardTitle>Sign Up</CardTitle>
+            <CardDescription>
+              Authentication coming soon! For now, explore the platform.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <Label htmlFor="name">Full Name</Label>
+              <Input id="name" placeholder="Enter your full name" disabled />
+            </div>
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="Enter your email" disabled />
+            </div>
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" type="password" placeholder="Create a password" disabled />
+            </div>
+            <Button className="w-full" disabled>
+              Create Account
+            </Button>
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                Already have an account?{' '}
+                <Link href="/sign-in" className="text-primary hover:underline">
+                  Sign in
+                </Link>
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )

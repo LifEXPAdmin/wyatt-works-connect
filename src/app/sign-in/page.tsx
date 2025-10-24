@@ -1,4 +1,8 @@
-import { SignIn } from '@clerk/nextjs'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import Link from 'next/link'
 
 export default function SignInPage() {
   return (
@@ -16,14 +20,35 @@ export default function SignInPage() {
             Sign in to continue building with your community
           </p>
         </div>
-        <SignIn 
-          appearance={{
-            elements: {
-              formButtonPrimary: 'bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700',
-              card: 'shadow-lg',
-            }
-          }}
-        />
+        <Card>
+          <CardHeader>
+            <CardTitle>Sign In</CardTitle>
+            <CardDescription>
+              Authentication coming soon! For now, explore the platform.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="Enter your email" disabled />
+            </div>
+            <div>
+              <Label htmlFor="password">Password</Label>
+              <Input id="password" type="password" placeholder="Enter your password" disabled />
+            </div>
+            <Button className="w-full" disabled>
+              Sign In
+            </Button>
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                Don&apos;t have an account?{' '}
+                <Link href="/sign-up" className="text-primary hover:underline">
+                  Sign up
+                </Link>
+              </p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   )
