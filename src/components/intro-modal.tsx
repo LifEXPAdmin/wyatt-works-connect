@@ -275,11 +275,11 @@ export function IntroModal({ isOpen, onClose, project, role, founder }: IntroMod
                 <div className="flex items-center space-x-2 mt-1">
                   <span className="text-xs text-muted-foreground">{founder.location}</span>
                   <div className="flex space-x-1">
-                    {founder.skills.slice(0, 3).map((skill, index) => (
+                    {founder.skills?.slice(0, 3).map((skill, index) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         {skill}
                       </Badge>
-                    ))}
+                    )) || null}
                   </div>
                 </div>
               </div>
