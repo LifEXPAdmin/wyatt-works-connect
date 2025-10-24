@@ -360,9 +360,26 @@ export async function createEvent(event: Partial<Event>): Promise<Event | null> 
 }
 
 export async function rsvpToEvent(userId: string, eventId: string): Promise<boolean> {
+  // First get the current attendees array
+  const { data: event, error: fetchError } = await supabase
+    .from('events')
+    .select('attendees')
+    .eq('id', eventId)
+    .single()
+
+  if (fetchError) {
+    console.error('Error fetching event:', fetchError)
+    return false
+  }
+
+  // Add the user to the attendees array
+  const currentAttendees = event?.attendees || []
+  const updatedAttendees = [...currentAttendees, userId]
+
+  // Update the event with the new attendees array
   const { error } = await supabase
     .from('events')
-    .update({ attendees: supabase.raw(`array_append(attendees, '${userId}')`) })
+    .update({ attendees: updatedAttendees })
     .eq('id', eventId)
 
   if (error) {
