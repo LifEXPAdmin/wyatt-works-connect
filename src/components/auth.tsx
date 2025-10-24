@@ -1,21 +1,6 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { 
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { 
-  User, 
-  Settings, 
-  LogOut, 
-  Bell,
-  HelpCircle
-} from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 
@@ -36,7 +21,7 @@ const ClerkUserButton = dynamic(() => import('./clerk-user-button'), {
 
 const ClerkAuthGuard = dynamic(() => import('./clerk-auth-guard'), {
   ssr: false,
-  loading: ({ children }: { children: React.ReactNode }) => <>{children}</>
+  loading: () => <div>Loading...</div>
 })
 
 export function UserButton() {
