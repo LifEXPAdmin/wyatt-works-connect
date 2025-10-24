@@ -29,17 +29,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <NotificationProvider>
-            {children}
-          </NotificationProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+  const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  const content = (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <NotificationProvider>
+          {children}
+        </NotificationProvider>
+      </body>
+    </html>
   );
+
+  // Only wrap with ClerkProvider if the key is available
+  if (clerkPublishableKey) {
+    return (
+      <ClerkProvider publishableKey={clerkPublishableKey}>
+        {content}
+      </ClerkProvider>
+    );
+  }
+
+  return content;
 }

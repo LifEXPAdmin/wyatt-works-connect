@@ -21,6 +21,22 @@ import {
 import Link from 'next/link'
 
 export function UserButton() {
+  // Check if Clerk is available
+  const clerkAvailable = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  if (!clerkAvailable) {
+    return (
+      <div className="flex items-center space-x-2">
+        <Button variant="ghost" size="sm" asChild>
+          <Link href="/sign-in">Sign In</Link>
+        </Button>
+        <Button variant="gradient" size="sm" asChild>
+          <Link href="/sign-up">Start Your Profile</Link>
+        </Button>
+      </div>
+    )
+  }
+
   const { user } = useUser()
   const { signOut } = useClerk()
 
@@ -101,6 +117,14 @@ export function UserButton() {
 }
 
 export function AuthGuard({ children }: { children: React.ReactNode }) {
+  // Check if Clerk is available
+  const clerkAvailable = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  if (!clerkAvailable) {
+    // If Clerk isn't available, just render children (for development/demo)
+    return <>{children}</>
+  }
+
   const { isLoaded, isSignedIn } = useUser()
 
   if (!isLoaded) {
