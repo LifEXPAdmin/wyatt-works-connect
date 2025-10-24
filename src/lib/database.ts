@@ -406,9 +406,26 @@ export async function getBadges(): Promise<Badge[]> {
 }
 
 export async function awardBadge(userId: string, badgeName: string): Promise<boolean> {
+  // First get the current badges array
+  const { data: profile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('badges')
+    .eq('user_id', userId)
+    .single()
+
+  if (fetchError) {
+    console.error('Error fetching profile:', fetchError)
+    return false
+  }
+
+  // Add the badge to the badges array
+  const currentBadges = profile?.badges || []
+  const updatedBadges = [...currentBadges, badgeName]
+
+  // Update the profile with the new badges array
   const { error } = await supabase
     .from('profiles')
-    .update({ badges: supabase.raw(`array_append(badges, '${badgeName}')`) })
+    .update({ badges: updatedBadges })
     .eq('user_id', userId)
 
   if (error) {
@@ -421,9 +438,26 @@ export async function awardBadge(userId: string, badgeName: string): Promise<boo
 
 // Utility functions
 export async function incrementInfluencePoints(userId: string, points: number): Promise<boolean> {
+  // First get the current influence points
+  const { data: profile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('influence_points')
+    .eq('user_id', userId)
+    .single()
+
+  if (fetchError) {
+    console.error('Error fetching profile:', fetchError)
+    return false
+  }
+
+  // Calculate new influence points
+  const currentPoints = profile?.influence_points || 0
+  const newPoints = currentPoints + points
+
+  // Update the profile with the new influence points
   const { error } = await supabase
     .from('profiles')
-    .update({ influence_points: supabase.raw(`influence_points + ${points}`) })
+    .update({ influence_points: newPoints })
     .eq('user_id', userId)
 
   if (error) {
