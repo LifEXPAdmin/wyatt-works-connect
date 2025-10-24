@@ -40,14 +40,14 @@ export function ProfileCompleteness({
 
   const calculateCompleteness = (profileData: Record<string, unknown>) => {
     const items = [
-      { key: 'name', label: 'Name', weight: 10, check: () => profileData.name?.length > 0 },
-      { key: 'headline', label: 'Professional Headline', weight: 15, check: () => profileData.headline?.length >= 10 },
-      { key: 'photo', label: 'Profile Photo', weight: 10, check: () => profileData.photo?.length > 0 },
-      { key: 'location', label: 'Location', weight: 10, check: () => profileData.location?.city?.length > 0 },
-      { key: 'roles', label: 'Roles', weight: 10, check: () => profileData.roles?.length > 0 },
-      { key: 'skills', label: 'Skills (3+)', weight: 15, check: () => profileData.skills?.length >= 3 },
-      { key: 'industries', label: 'Industries', weight: 10, check: () => profileData.industries?.length > 0 },
-      { key: 'bio', label: 'Bio', weight: 10, check: () => profileData.bio?.length > 0 },
+      { key: 'name', label: 'Name', weight: 10, check: () => (profileData.name as string)?.length > 0 },
+      { key: 'headline', label: 'Professional Headline', weight: 15, check: () => (profileData.headline as string)?.length >= 10 },
+      { key: 'photo', label: 'Profile Photo', weight: 10, check: () => (profileData.photo as string)?.length > 0 },
+      { key: 'location', label: 'Location', weight: 10, check: () => (profileData.location as { city?: string })?.city?.length > 0 },
+      { key: 'roles', label: 'Roles', weight: 10, check: () => (profileData.roles as string[])?.length > 0 },
+      { key: 'skills', label: 'Skills (3+)', weight: 15, check: () => (profileData.skills as string[])?.length >= 3 },
+      { key: 'industries', label: 'Industries', weight: 10, check: () => (profileData.industries as string[])?.length > 0 },
+      { key: 'bio', label: 'Bio', weight: 10, check: () => (profileData.bio as string)?.length > 0 },
       { key: 'portfolio', label: 'Portfolio Links', weight: 10, check: () => profileData.portfolio && Object.values(profileData.portfolio).some((link: unknown) => (link as string)?.length > 0) },
     ]
 
