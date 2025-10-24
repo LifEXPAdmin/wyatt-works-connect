@@ -58,7 +58,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
     // Save notifications to localStorage
     const key = `notifications_demo_user`
     localStorage.setItem(key, JSON.stringify(notifications))
-  }, [notifications, user?.id])
+  }, [notifications]) // Removed user?.id dependency
 
   const addNotification = (notification: Omit<Notification, 'id' | 'timestamp' | 'isRead'>) => {
     const newNotification: Notification = {
