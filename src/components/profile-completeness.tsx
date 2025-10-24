@@ -218,7 +218,7 @@ export function ProfileGate({
           <p className="text-muted-foreground mb-6">
             {fallbackMessage}
           </p>
-          <ProfileCompleteness profile={profile} showDetails />
+          <ProfileCompleteness profile={profile || undefined} showDetails />
         </div>
       </div>
     )
