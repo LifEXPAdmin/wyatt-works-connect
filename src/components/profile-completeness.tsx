@@ -43,7 +43,10 @@ export function ProfileCompleteness({
       { key: 'name', label: 'Name', weight: 10, check: () => (profileData.name as string)?.length > 0 },
       { key: 'headline', label: 'Professional Headline', weight: 15, check: () => (profileData.headline as string)?.length >= 10 },
       { key: 'photo', label: 'Profile Photo', weight: 10, check: () => (profileData.photo as string)?.length > 0 },
-      { key: 'location', label: 'Location', weight: 10, check: () => (profileData.location as { city?: string })?.city?.length > 0 },
+      { key: 'location', label: 'Location', weight: 10, check: () => {
+          const location = profileData.location as { city?: string } | undefined;
+          return location?.city && location.city.length > 0;
+        }},
       { key: 'roles', label: 'Roles', weight: 10, check: () => (profileData.roles as string[])?.length > 0 },
       { key: 'skills', label: 'Skills (3+)', weight: 15, check: () => (profileData.skills as string[])?.length >= 3 },
       { key: 'industries', label: 'Industries', weight: 10, check: () => (profileData.industries as string[])?.length > 0 },
