@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -28,7 +27,7 @@ export function ProfileCompleteness({
   showDetails = false, 
   onComplete 
 }: ProfileCompletenessProps) {
-  const { user } = useUser()
+  // const { user } = useUser() // Removed for build compatibility
   const [completeness, setCompleteness] = useState(0)
   const [missingItems, setMissingItems] = useState<string[]>([])
 
@@ -184,7 +183,7 @@ export function ProfileGate({
   requiredCompleteness?: number
   fallbackMessage?: string
 }) {
-  const { user } = useUser()
+  // const { user } = useUser() // Removed for build compatibility
   const [profile, setProfile] = useState<Record<string, unknown> | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 

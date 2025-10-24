@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect, createContext, useContext } from 'react'
-import { useUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -38,11 +37,11 @@ interface NotificationContextType {
 const NotificationContext = createContext<NotificationContextType | null>(null)
 
 export function NotificationProvider({ children }: { children: React.ReactNode }) {
-  const { user } = useUser()
+  // const { user } = useUser() // Removed for build compatibility
   const [notifications, setNotifications] = useState<Notification[]>([])
 
   useEffect(() => {
-    if (!user?.id) return
+    // if (!user?.id) return
 
     // Load notifications from localStorage
     const key = `notifications_${user.id}`
@@ -54,7 +53,7 @@ export function NotificationProvider({ children }: { children: React.ReactNode }
   }, [user?.id])
 
   useEffect(() => {
-    if (!user?.id) return
+    // if (!user?.id) return
 
     // Save notifications to localStorage
     const key = `notifications_${user.id}`

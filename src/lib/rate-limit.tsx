@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
 
 interface RateLimitState {
   count: number
@@ -14,7 +13,7 @@ const INTRO_LIMIT = 10 // 10 intros per day
 const RESET_HOURS = 24 // Reset every 24 hours
 
 export function useIntroRateLimit() {
-  const { user } = useUser()
+  // const { user } = useUser() // Removed for build compatibility
   const [rateLimit, setRateLimit] = useState<RateLimitState>({
     count: 0,
     limit: INTRO_LIMIT,

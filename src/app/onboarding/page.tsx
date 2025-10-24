@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -71,10 +70,10 @@ const industryTags = [
 ]
 
 export default function OnboardingPage() {
-  const { user } = useUser()
+  // const { user } = useUser() // Removed for build compatibility
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
-    name: user?.fullName || '',
+    name: '', // user?.fullName || '',
     headline: '',
     bio: '',
     location: {
