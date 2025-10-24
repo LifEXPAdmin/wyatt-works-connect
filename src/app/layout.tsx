@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ClerkProvider } from '@clerk/nextjs'
 import { NotificationProvider } from '@/components/notifications'
 import "./globals.css";
 
@@ -29,9 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-  
-  const content = (
+  return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -42,15 +39,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-
-  // Only wrap with ClerkProvider if the key is available
-  if (clerkPublishableKey) {
-    return (
-      <ClerkProvider publishableKey={clerkPublishableKey}>
-        {content}
-      </ClerkProvider>
-    );
-  }
-
-  return content;
 }
